@@ -9,12 +9,14 @@ import { BiSearch } from "react-icons/bi";
 import Box from "./Box";
 import SideBarItem from "./SideBarItem";
 import Library from "./Library";
+import { Song } from "@/types";
 
 interface SideBarProps {
   children: React.ReactNode;
+  songs: Song[];
 }
 
-const SideBar: React.FC<SideBarProps> = ({ children }) => {
+const SideBar: React.FC<SideBarProps> = ({ children, songs }) => {
   const pathname = usePathname();
   const routes = useMemo(
     () => [
@@ -47,7 +49,7 @@ const SideBar: React.FC<SideBarProps> = ({ children }) => {
           </div>
         </Box>
         <Box className="h-full overflow-y-auto">
-          <Library />
+          <Library songs={songs} />
         </Box>
       </div>
       <main className="flex-1 h-full py-2 oveflow-y-auto">{children}</main>
